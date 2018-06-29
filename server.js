@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 
-mongoose.connect("mongodb://localhost/my-blog");
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/my-blog");
 
 
 // This allows us to serve files out of the client/build folder
