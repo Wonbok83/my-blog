@@ -12,18 +12,7 @@ class App extends Component {
 
 
 
-  getGetRequest(){
-    axios.get("/api/test").then(res => {
-      console.log("get test");
-    }); 
-  }
-  getPostRequest(){
-    //sending test information -> {test: true} -> it is showing up terminal(node server.js) -> it is sending to server. 
-    axios.post("/api/test", {test: true}).then(res => {
-      console.log("Post test");
-    })
-
-  }
+ 
 
   handleInputChange = event => {
     const {name, value} = event.target;
@@ -40,13 +29,22 @@ class App extends Component {
 
   }
 
+    postBlog = (event)=> {
+      event.preventDefault();
+      const {title, body} = this.state;
+      axios.post("api/blog", {title, body}).then(res=>{
+        console.log(res);
+        this.setState({title:"", body:""});
+      })
+    }
+
   render() {
     return (
       <div>
         <form>
         <input name="title" onChange = {this.handleInputChange} value={this.state.title}/>
         <textarea name="body" onChange = {this.handleInputChange} value = {this.state.body}></textarea>
-        <button onClick={this.saveBlog}>Submit</button>
+        <button onClick={this.postBlog}>Submit</button>
         </form>
       </div>
     );

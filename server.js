@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
 const path = require("path");
 
+const blogPosts = [];
+
 // Use bodyParser in our app
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,10 +26,11 @@ app.get("/api/test", (req, res)=> {
     res.json(true);
 });
 
-app.post("/api/test", (req, res)=> { 
+app.post("/api/blog", (req, res)=> { 
     console.log(req.body);
-    req.body.received = true;
-    res.json(req.body);
+    blogPosts.push(req.body);
+
+    res.json(blogPosts);
 });
 
 // This is a catch all if no other routes are matched
