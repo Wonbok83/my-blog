@@ -1,8 +1,8 @@
 const express = require("express");
 const app = express();
-var bodyParser = require("body-parser");
+const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 3001;
-const path = require("path");
+// const path = require("path");
 
 // Use bodyParser in our app
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -21,6 +21,7 @@ app.get("/api/test", (req, res)=> {
 
 app.post("/api/test", (req, res)=> { 
     console.log(req.body);
+    req.body.received = true;
     res.json(req.body);
 });
 
