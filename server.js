@@ -26,9 +26,19 @@ app.get("/", (req, res) => {
 
 
 
-app.get("/api/test", (req, res)=> {
+app.get("/api/blog", (req, res)=> {
     console.log(req.body);
-    res.json(true);
+    Blog.find({}).then(results=>res.json(results));
+    // res.json([{
+    //     id:1,
+    //     title: "blog1",
+    //     body: "111"
+    // },
+    // {
+    //     id:2,
+    //     title: "blog2",
+    //     body: "222"
+    // }]);
 });
 
 app.post("/api/blog", (req, res)=> { 

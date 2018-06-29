@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 //import logo from './logo.svg';
 import './App.css';
 import axios from "axios";
+import ViewBlog from './pages/ViewBlog';
+
 
 class App extends Component {
 
@@ -46,6 +48,8 @@ class App extends Component {
         <textarea name="body" onChange = {this.handleInputChange} value = {this.state.body}></textarea>
         <button onClick={this.postBlog}>Submit</button>
         </form>
+
+        <ViewBlog/>
       </div>
     );
   }
